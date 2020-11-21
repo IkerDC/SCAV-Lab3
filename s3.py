@@ -34,19 +34,28 @@ class Container:
         mono2 = "ffmpeg -i mono_"+self.video_file+" -vn -acodec copy mono.mp3"
         #TAKE LOWER BIT RATE
 
-    def broadcasting(self, brd_std):
+    def broadcasting(self, brd_std, streams ):
         possible_std = []
-        print("Streams of the video:", self.tracks)
+        print("Streams of the video:", streams)
         for key in brd_std:
-            if(all(elem in brd_std[key]  for elem in self.tracks)):
+            if(all(elem in brd_std[key]  for elem in streams)):
                 possible_std.append(key)
                 print("Possible standart:", key)
         if not possible_std:
-            print("ERROR: The streams give are not in any standart, or not all the stream not compatible with one sam standart")
+            print("ERROR: The given streams don't belong to any standart, or not all of them the stream are compatible with one same standart")
         return  possible_std
 
-
-
+    def test_broadcasting(self, brd_std):
+        streams = []
+        print("Introduce streams (as many as you want) or 0 to test:")
+        a = True
+        while(a):
+            x = input()
+            if (x == "0"):
+                a = False
+            else:
+                streams.append(x)
+        self.broadcasting(brd_std, streams)
 
 
 
@@ -58,6 +67,8 @@ video_audio_std = dict([
     ("ATSC", ["mpeg2","h264","ac3"]),
     ("DTMB", ["avs","avs+","mpeg2","h264","dra","aac","mp2","mp3"])
 ])
-a.broadcasting(video_audio_std)
+#a.broadcasting(video_audio_std, a.tracks)
+a.test_broadcasting(video_audio_std)
+
 
 
