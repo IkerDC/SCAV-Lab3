@@ -49,15 +49,22 @@ class Container:
         mono = "mono.acc"
         low = "low_audio.ac3"
         subtitles = "subtitles.srt"
-        self.pack_to_BBB_container(video, mono, low, subtitles)
+        self.pack_to_BBB_container()
 
-    def pack_to_BBB_container(self, video, mono, low, subtitles):
-
-
-
-
-
-
+    def pack_to_BBB_container(self):
+        stream = []
+        print("Introduce streams to pack (input.mp4, audio.ac3, sub.srt, etc) and 0 to pack everything")
+        cmd = ""
+        a = True
+        while (a):
+            x = input()
+            if (x == "0"):
+                a = False
+            else:
+                stream.append(x)
+        for track in stream:
+            cmd = cmd+" -i "+track
+        os.system("ffmpeg"+cmd+" -c:v copy -c:a copy -c:s mov_text new_video.mp4")
 
 
 
@@ -96,6 +103,6 @@ video_audio_std = dict([
 ])
 #a.broadcasting(video_audio_std, a.tracks)
 #a.test_broadcasting(video_audio_std)
-
+a.pack_to_BBB_container()
 
 
