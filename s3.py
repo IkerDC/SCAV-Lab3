@@ -26,13 +26,40 @@ class Container:
         return data
 
     def create_BBB_container(self):
+
         #Cut 1 min
         cut1 =  "ffmpeg -ss 00:00 -i " + self.video_file+ ".mp4 -to 01:00 -c copy cut_"+self.video_file
         cut2 = "ffmpeg -i " + self.video_file + ".mp4 -ss 00:00 -to 01:00 -c copy cut_" +self.video_file
+        os.system(cut1)
+        os.system(cut2)
+
         #Take the mono
         mono1 = "ffmpeg -i cut_" +self.video_file+ ".mp4 -ac 1 mono_" +self.video_file
-        mono2 = "ffmpeg -i mono_"+self.video_file+" -vn -acodec copy mono.mp3"
-        #TAKE LOWER BIT RATE
+        mono2 = "ffmpeg -i mono_"+self.video_file+" -vn -acodec copy mono.aac"
+        os.system(mono1)
+        os.system(mono2)
+
+        #Take lower bit rate
+        audio = "ffmpeg -i cut_"+self.video_file+" -vn -acodec copy audio.ac3"
+        low_bit = "ffmpeg -i audio.ac3 -codec:a libmp3lame -b:a 56k low_audio.ac3"
+        os.system(audio)
+        os.system(low_bit)
+
+        video = "cut_"+self.video_file
+        mono = "mono.acc"
+        low = "low_audio.ac3"
+        subtitles = "subtitles.srt"
+        self.pack_to_BBB_container(video, mono, low, subtitles)
+
+    def pack_to_BBB_container(self, video, mono, low, subtitles):
+
+
+
+
+
+
+
+
 
     def broadcasting(self, brd_std, streams ):
         possible_std = []
@@ -68,7 +95,7 @@ video_audio_std = dict([
     ("DTMB", ["avs","avs+","mpeg2","h264","dra","aac","mp2","mp3"])
 ])
 #a.broadcasting(video_audio_std, a.tracks)
-a.test_broadcasting(video_audio_std)
+#a.test_broadcasting(video_audio_std)
 
 
 
