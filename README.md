@@ -36,4 +36,4 @@ Project Link: [https://github.com/IkerDC/SCAV-P2](https://github.com/IkerDC/SCAV
 * [FFmpeg](https://ffmpeg.org/)
 * [FFmpeg Seeking](https://trac.ffmpeg.org/wiki/Seeking)
 * [FFmpeg Audio](https://trac.ffmpeg.org/wiki/Encode/AAC)
-* [Broacasting standarts] (https://en.wikipedia.org/wiki/Broadcast_television_systems)
+* [Broacasting standarts](https://en.wikipedia.org/wiki/Broadcast_television_systems)
