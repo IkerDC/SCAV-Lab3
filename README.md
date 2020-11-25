@@ -1,11 +1,11 @@
-### SCAV-S3
+### SCAV-LAB3
 
 This code is intended to satisfy the requirements of the practice 3 from the course Audio and Video Encoding Systems (University Pompeu Fabra, 2020).
 
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Logo_UPF.jpg" width="128" height="44" />
 
-# Instalation
+# Installation
 This code was writen in Python via IDE PyCharm (in Windows). It makes uses of **ffmpeg**, to download it acces [https://ffmpeg.org/](https://ffmpeg.org/) or install it using commands (if ffmpeg is instaled in Windows, please allow the terminal to directly execute it by adding the path to the folder where ffmpeg will be loacted). A Python interpreter is expected to already be instaled, so the code can be run. The only library that this code uses is *os*.
 
 # Requirements
